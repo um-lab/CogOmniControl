@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CogOmniControl: Reasoning-Driven Controllable Video Generation</title>
+<meta name="description" content="CogOmniControl — Reasoning-Driven Controllable Video Generation via Creative Intent Cognition. Hongji Yang, Songlian Li, Yucheng Zhou, Xiaotong Zhao, Alan Zhao, Chengzhong Xu, Jianbing Shen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/static/style.css?v=5" />
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <p class="venue-tag">Reasoning-Driven · Controllable Video Generation</p>
+    <h1 class="paper-title">
+      <span class="grad-text">CogOmniControl</span><br/>
+      <span class="subtitle-line">Reasoning-Driven Controllable Video Generation<br/>via Creative Intent Cognition</span>
+    </h1>
+
+    <div class="authors">
+      <!-- Replace href="#" with each author's homepage.
+           If an author has no homepage, keep href="#" and add the
+           `data-nohome` attribute → it will render as plain text. -->
+      <a class="author" href="https://scholar.google.com/citations?user=9LKeHwQAAAAJ" target="_blank" rel="noopener">Hongji Yang<sup>1,*</sup></a>
+      <a class="author" href="#" data-nohome target="_blank" rel="noopener">Songlian Li<sup>2,*</sup></a>
+      <a class="author" href="https://scholar.google.com/citations?user=nnbFqRAAAAAJ" target="_blank" rel="noopener">Yucheng Zhou<sup>1</sup></a>
+      <a class="author" href="#" data-nohome target="_blank" rel="noopener">Xiaotong Zhao<sup>2</sup></a>
+      <a class="author" href="#" data-nohome target="_blank" rel="noopener">Alan Zhao<sup>2</sup></a>
+      <a class="author" href="https://scholar.google.com/citations?user=XsBBTUgAAAAJ" target="_blank" rel="noopener">Chengzhong Xu<sup>1</sup></a>
+      <a class="author" href="https://scholar.google.com/citations?user=_Q3NTToAAAAJ" target="_blank" rel="noopener">Jianbing Shen<sup>1,&#9993;</sup></a>
+    </div>
+    <div class="affiliations">
+      <span><sup>1</sup>SKL-IOTSC, CIS, University of Macau</span>
+      <span class="aff-sep">·</span>
+      <span><sup>2</sup>Online-Video BU, Tencent</span>
+    </div>
+    <div class="author-notes">
+      <span><sup>*</sup>Equal contribution.</span>
+      <span><sup>&#9993;</sup>Corresponding author.</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 2.5L19.5 10H14V4.5Z"/></svg>
+        Paper
+      </a>
+      <!-- Code & Demos buttons are hidden until release.
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.16c-3.2.7-3.88-1.37-3.88-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.04 11.04 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+        Code
+      </a>
+      <a class="btn btn-ghost" href="#examples">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7-11-7Z"/></svg>
+        Demos
+      </a>
+      -->
+      <a class="btn btn-ghost" href="#bibtex">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 4h16v4H4V4Zm0 6h10v4H4v-4Zm0 6h16v4H4v-4Z"/></svg>
+        BibTeX
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TEASER FIGURE ===== -->
+<section class="teaser-section">
+  <div class="container">
+    <figure class="teaser smart-figure"
+            data-src="assets/static/teaser"
+            data-exts="svg,png,jpg,jpeg,webp,pdf">
+      <div class="figure-slot">
+        <div class="figure-placeholder">
+          <span>Teaser figure / overview will be placed here</span>
+          <small>drop <code>assets/static/teaser.{svg|png|jpg|pdf}</code></small>
+        </div>
+      </div>
+      <figcaption>
+        <strong>Figure 1.</strong> CogOmniControl factorizes controllable video generation into <em>creative-intent cognition</em> and <em>generation</em>.
+        A specialized CogVLM transforms sparse / abstract conditions into dense reasoning, which guides CogOmniDiT to synthesize videos that faithfully match user intent.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== ABSTRACT ===== -->
+<section id="abstract" class="section">
+  <div class="container narrow">
+    <h2 class="section-title">Abstract</h2>
+    <p class="abstract">
+      Recent diffusion models achieve strong photorealism and fluency in video generation, yet remain fragile under abstract,
+      sparse or complex conditions, leading to poor performance in professional production workflows such as
+      storyboard sketches and clay-render conditions. Existing video-generation models either inject conditions through
+      adapters or couple a generic vision-language model (VLM) with a diffusion backbone, leaving a capability gap and
+      failing to produce videos that align with the user's creative intent.
+      We present <b>CogOmniControl</b>, a reasoning-driven framework that factorizes controllable video generation into
+      <b>creative-intent cognition</b> and <b>generation</b>. We train a specialized <b>CogVLM</b> using authentic anime-production
+      data; compared to generic VLMs, it produces more professional and clearer outputs, accurately cognizing user intent
+      from sparse and abstract conditions. <b>CogOmniDiT</b> unifies controls from heterogeneous conditions through in-context
+      generation and is aligned with the CogVLM reasoning outputs via reinforcement learning.
+      Furthermore, leveraging CogVLM's robust capability in guiding video generation, we release its potential in planning
+      specific evaluators and enable a Best-of-N selection, transforming the entire framework into a closed-loop
+      "harness-like" architecture. We also introduce <b>CogReasonBench</b> and <b>CogControlBench</b>, built from professional
+      workflow data carrying genuine creative intent. Experiments on the two benchmarks show that CogOmniControl surpasses
+      existing open-source models.
+    </p>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section id="method" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Method</h2>
+    <p class="section-lead">
+      CogOmniControl is a <em>closed-loop harness</em>: a reasoning VLM cognizes the user's creative intent from heterogeneous
+      conditions, a unified DiT generates videos in-context, and an evaluator harness selects the best output among candidates.
+    </p>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-num">01</div>
+        <h3>CogVLM<br/><span class="muted">Creative-Intent Cognition</span></h3>
+        <p>
+          A specialized vision-language model fine-tuned with <b>SFT + RFT</b> on real anime-production data. It maps sparse
+          conditions (storyboards, clay-renders, ref images, prompts) to <b>dense reasoning</b> covering visual consistency,
+          motion smoothness, special effects, static-to-dynamic transitions and creative intent.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-num">02</div>
+        <h3>CogOmniDiT<br/><span class="muted">Unified Video DiT</span></h3>
+        <p>
+          A single transformer backbone consumes heterogeneous conditions in-context:
+          <code>Concat(Z<sub>t</sub>, Z<sub>ref</sub>, Z<sub>ctrl</sub>, Emb<sub>VLM</sub>)</code>.
+          Self-attention models cross-condition interactions, enabling precise control under abstract or partially-missing inputs.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-num">03</div>
+        <h3>RL Alignment<br/><span class="muted">Holistic + Accuracy Rewards</span></h3>
+        <p>
+          We align CogVLM's reasoning with downstream generation through reinforcement fine-tuning, optimizing
+          <b>creative intent</b>, <b>physical plausibility</b>, <b>information integrity</b> and <b>motion description</b>,
+          with an additional atomic-fact accuracy reward that grounds outputs and suppresses hallucination.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-num">04</div>
+        <h3>Evaluator Harness<br/><span class="muted">Closed-Loop Best-of-N</span></h3>
+        <p>
+          CogVLM additionally plans an <b>adaptive evaluator set</b> per input from a tool library, scoring N candidate
+          videos and selecting the one that best fulfills the inferred intent — turning the whole pipeline into a
+          self-verifying closed loop.
+        </p>
+      </div>
+    </div>
+
+    <figure class="pipeline-figure smart-figure"
+            data-src="assets/static/pipeline"
+            data-exts="svg,png,jpg,jpeg,webp,pdf">
+      <div class="figure-slot">
+        <div class="figure-placeholder">
+          <span>Pipeline diagram will be placed here</span>
+          <small>drop <code>assets/static/pipeline.pdf</code></small>
+        </div>
+      </div>
+      <figcaption><strong>Figure 2.</strong> Overall pipeline of CogOmniControl.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== EXAMPLES ===== -->
+<section id="examples" class="section">
+  <div class="container">
+    <h2 class="section-title">Qualitative Results</h2>
+    <p class="section-lead">
+      Each example below shows the optional <b>Control Video</b> and <b>Reference Image</b> conditions, the <b>Text Prompt</b>,
+      and the <b>Generated Video</b>.
+    </p>
+
+    <!-- ============================================
+         FEATURED EXAMPLES (full-width, large prompt)
+         Layout drivers per <article>:
+            data-has-control="true|false"
+            data-has-ref="true|false"
+         Add class "featured" for single-column big layout.
+         ============================================ -->
+
+    <!-- ===== Featured Example 1 ===== -->
+    <article class="example featured" data-has-control="true" data-has-ref="true">
+      <header class="example-header">
+        <span class="example-id">Example 01</span>
+        <h3 class="example-title">Storyboard → Final Animation</h3>
+      </header>
+
+      <div class="example-body">
+        <div class="inputs-row">
+          <div class="media-card" data-kind="control">
+            <div class="media-card-head">
+              <span class="kind-tag tag-control">Control Video</span>
+            </div>
+            <div class="media-frame">
+              <video class="media" muted loop playsinline preload="metadata"
+                     poster="assets/examples/example1/control_poster.jpg">
+                <source src="assets/examples/example1/control.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">control video<br/><code>assets/examples/example1/control.mp4</code></div>
+            </div>
+          </div>
+
+          <div class="media-card" data-kind="ref">
+            <div class="media-card-head">
+              <span class="kind-tag tag-ref">Reference Image</span>
+            </div>
+            <div class="media-frame">
+              <img class="media" src="assets/examples/example1/ref.jpg" alt="reference image"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="media-fallback" style="display:none;">ref image<br/><code>assets/examples/example1/ref.jpg</code></div>
+            </div>
+          </div>
+
+          <div class="media-card prompt-card" data-kind="prompt">
+            <div class="media-card-head">
+              <span class="kind-tag tag-prompt">Text Prompt</span>
+            </div>
+            <div class="prompt-box">
+              <p>A woman in a flowing blue dress walks through a forest, holding her dress with both hands. She turns her head to look around, appearing concerned. She continues walking, then turns her body to face the camera, looking down and clasping her hands together. She then turns to her left, and subtitles appear on the screen, expressing concern about encountering danger. The camera follows her movements, capturing her from various angles as she navigates the dense forest. The background features tall trees and a misty atmosphere, adding to the sense of unease. The woman's long black hair flows behind her, and she wears delicate earrings and a floral hair accessory. The overall mood is tense and suspenseful, hinting at a potential threat lurking in the woods.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-row">
+          <div class="media-card output-card">
+            <div class="media-card-head">
+              <span class="kind-tag tag-output">Generated Video</span>
+              <span class="kind-tag tag-ours">Ours</span>
+            </div>
+            <div class="media-frame ratio-16x9">
+              <video class="media" controls muted loop playsinline preload="metadata"
+                     poster="assets/examples/example1/output_poster.jpg">
+                <source src="assets/examples/example1/output.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">final video<br/><code>assets/examples/example1/output.mp4</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Featured Example 2  (no control video) ===== -->
+    <article class="example featured" data-has-control="false" data-has-ref="true">
+      <header class="example-header">
+        <span class="example-id">Example 02</span>
+        <h3 class="example-title">Reference-Driven Generation</h3>
+      </header>
+
+      <div class="example-body">
+        <div class="inputs-row">
+          <div class="media-card" data-kind="ref">
+            <div class="media-card-head">
+              <span class="kind-tag tag-ref">Reference Image</span>
+            </div>
+            <div class="media-frame">
+              <img class="media" src="assets/examples/example2/ref.jpg" alt="reference image"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="media-fallback" style="display:none;">ref image<br/><code>assets/examples/example2/ref.jpg</code></div>
+            </div>
+          </div>
+
+          <div class="media-card prompt-card" data-kind="prompt">
+            <div class="media-card-head">
+              <span class="kind-tag tag-prompt">Text Prompt</span>
+            </div>
+            <div class="prompt-box">
+              <p>A fluffy cat is walking down a cobblestone street, heading towards the camera. The cat's fur is soft and well-groomed, with long whiskers and bright yellow eyes. It appears to be in mid-stride, with one paw slightly raised. The background features traditional buildings with hanging signs and lanterns, suggesting an Asian setting. There are people in the distance, but they are blurred, drawing attention to the cat. The camera is positioned at ground level, capturing the cat from the front and emphasizing its movement. The lighting is natural and warm, creating a cozy and inviting atmosphere. The scene is in real-life.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-row">
+          <div class="media-card output-card">
+            <div class="media-card-head">
+              <span class="kind-tag tag-output">Generated Video</span>
+              <span class="kind-tag tag-ours">Ours</span>
+            </div>
+            <div class="media-frame ratio-16x9">
+              <video class="media" controls muted loop playsinline preload="metadata"
+                     poster="assets/examples/example2/output_poster.jpg">
+                <source src="assets/examples/example2/output.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">final video<br/><code>assets/examples/example2/output.mp4</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Featured Example 3 ===== -->
+    <article class="example featured" data-has-control="true" data-has-ref="true">
+      <header class="example-header">
+        <span class="example-id">Example 03</span>
+        <h3 class="example-title">Clay Render → Video</h3>
+      </header>
+
+      <div class="example-body">
+        <div class="inputs-row">
+          <div class="media-card" data-kind="control">
+            <div class="media-card-head">
+              <span class="kind-tag tag-control">Control Video</span>
+            </div>
+            <div class="media-frame">
+              <video class="media" muted loop playsinline preload="metadata"
+                     poster="assets/examples/example3/control_poster.jpg">
+                <source src="assets/examples/example3/control.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">control video<br/><code>assets/examples/example3/control.mp4</code></div>
+            </div>
+          </div>
+
+          <div class="media-card" data-kind="ref">
+            <div class="media-card-head">
+              <span class="kind-tag tag-ref">Reference Image</span>
+            </div>
+            <div class="media-frame">
+              <img class="media" src="assets/examples/example3/ref.jpg" alt="reference image"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="media-fallback" style="display:none;">ref image<br/><code>assets/examples/example3/ref.jpg</code></div>
+            </div>
+          </div>
+
+          <div class="media-card prompt-card" data-kind="prompt">
+            <div class="media-card-head">
+              <span class="kind-tag tag-prompt">Text Prompt</span>
+            </div>
+            <div class="prompt-box">
+              <p>Highly cinematic realistic image, depicting a busy East Asian city street in the rain, with a group of pedestrians with varying expressions distributed in the center and foreground. In the foreground is a woman in a blue translucent hooded raincoat, her expression focused. In the middle, a man in a long, fully transparent raincoat is holding up a smartphone to take a picture, and next to him, another man in a purple jacket is also using his phone to record. Among the crowd are an efficient-looking woman in a black leather jacket, a man in a yellow raincoat, and a unique elderly person leaning forward. The background is a typical Chinese street scene, hanging with red and blue neon signs for "Noodle Shop" and "Supermarket", with slightly aged architectural styles. The ground is paved with gray stone bricks, wet and coldly shimmering due to the rain, clearly reflecting the neon lights and the figures of the pedestrians. The sky is drizzling, and the dense rain streaks are clearly visible under the lights. The overall tone is cold, full of story and a suppressed urban atmosphere, with extremely detailed image quality, realistic light and shadow representation, presenting a visual effect similar to movie stills. The camera pans slowly from right to left.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-row">
+          <div class="media-card output-card">
+            <div class="media-card-head">
+              <span class="kind-tag tag-output">Generated Video</span>
+              <span class="kind-tag tag-ours">Ours</span>
+            </div>
+            <div class="media-frame ratio-16x9">
+              <video class="media" controls muted loop playsinline preload="metadata"
+                     poster="assets/examples/example3/output_poster.jpg">
+                <source src="assets/examples/example3/output.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">final video<br/><code>assets/examples/example3/output.mp4</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Featured Example 4 ===== -->
+    <article class="example featured" data-has-control="true" data-has-ref="true">
+      <header class="example-header">
+        <span class="example-id">Example 04</span>
+        <h3 class="example-title">Featured Generation</h3>
+      </header>
+
+      <div class="example-body">
+        <div class="inputs-row">
+          <div class="media-card" data-kind="control">
+            <div class="media-card-head">
+              <span class="kind-tag tag-control">Control Video</span>
+            </div>
+            <div class="media-frame">
+              <video class="media" muted loop playsinline preload="metadata"
+                     poster="assets/examples/example4/control_poster.jpg">
+                <source src="assets/examples/example4/control.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">control video<br/><code>assets/examples/example4/control.mp4</code></div>
+            </div>
+          </div>
+
+          <div class="media-card" data-kind="ref">
+            <div class="media-card-head">
+              <span class="kind-tag tag-ref">Reference Image</span>
+            </div>
+            <div class="media-frame">
+              <img class="media" src="assets/examples/example4/ref.jpg" alt="reference image"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="media-fallback" style="display:none;">ref image<br/><code>assets/examples/example4/ref.jpg</code></div>
+            </div>
+          </div>
+
+          <div class="media-card prompt-card" data-kind="prompt">
+            <div class="media-card-head">
+              <span class="kind-tag tag-prompt">Text Prompt</span>
+            </div>
+            <div class="prompt-box">
+              <p>A group of fishing boats sails across the vast ocean, their wakes trailing behind them. The camera gradually moves forward, capturing the serene yet mysterious atmosphere created by the dark clouds and the rising plumes of black smoke in the distance. The boats, scattered across the water, appear small against the expansive horizon, emphasizing the scale and isolation of the scene. The muted tones and subtle details in the image evoke a sense of quiet tension, hinting at an underlying narrative or event unfolding beyond the frame.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-row">
+          <div class="media-card output-card">
+            <div class="media-card-head">
+              <span class="kind-tag tag-output">Generated Video</span>
+              <span class="kind-tag tag-ours">Ours</span>
+            </div>
+            <div class="media-frame ratio-16x9">
+              <video class="media" controls muted loop playsinline preload="metadata"
+                     poster="assets/examples/example4/output_poster.jpg">
+                <source src="assets/examples/example4/output.mp4" type="video/mp4" />
+              </video>
+              <div class="media-fallback">final video<br/><code>assets/examples/example4/output.mp4</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============================================
+         MORE RESULTS — 2 columns, compact layout
+         ============================================ -->
+    <h3 class="subgroup-title">More Results</h3>
+
+    <div class="examples-grid-2col">
+
+      <!-- Compact Example 5 -->
+      <article class="example compact" data-has-control="true" data-has-ref="true">
+        <header class="example-header">
+          <span class="example-id">Example 05</span>
+        </header>
+        <div class="example-body">
+          <div class="inputs-row">
+            <div class="media-card" data-kind="control">
+              <div class="media-card-head"><span class="kind-tag tag-control">Control</span></div>
+              <div class="media-frame">
+                <video class="media" muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example5/control.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">control<br/><code>example5/control.mp4</code></div>
+              </div>
+            </div>
+            <div class="media-card" data-kind="ref">
+              <div class="media-card-head"><span class="kind-tag tag-ref">Ref</span></div>
+              <div class="media-frame">
+                <img class="media" src="assets/examples/example5/ref.jpg" alt="ref"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="media-fallback" style="display:none;">ref<br/><code>example5/ref.jpg</code></div>
+              </div>
+            </div>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-box compact-prompt">
+              <span class="kind-tag tag-prompt">Prompt</span>
+              <p>High-quality dark fantasy game cinematic in a top-down isometric perspective featuring a group of burly, muscular Orc or Barbarian warriors with bronze skin and primitive armor trekking along a rugged wilderness path; one warrior pushes a wooden wheelbarrow filled with hay while the terrain of yellow soil and moss gives way to mist-shrouded hills, captured with a slow camera pan to the right.</p>
+            </div>
+          </div>
+          <div class="output-row">
+            <div class="media-card output-card">
+              <div class="media-card-head">
+                <span class="kind-tag tag-output">Generated</span>
+                <span class="kind-tag tag-ours">Ours</span>
+              </div>
+              <div class="media-frame ratio-16x9">
+                <video class="media" controls muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example5/output.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">final<br/><code>example5/output.mp4</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Compact Example 6 -->
+      <article class="example compact" data-has-control="true" data-has-ref="true">
+        <header class="example-header">
+          <span class="example-id">Example 06</span>
+        </header>
+        <div class="example-body">
+          <div class="inputs-row">
+            <div class="media-card" data-kind="control">
+              <div class="media-card-head"><span class="kind-tag tag-control">Control</span></div>
+              <div class="media-frame">
+                <video class="media" muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example6/control.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">control<br/><code>example6/control.mp4</code></div>
+              </div>
+            </div>
+            <div class="media-card" data-kind="ref">
+              <div class="media-card-head"><span class="kind-tag tag-ref">Ref</span></div>
+              <div class="media-frame">
+                <img class="media" src="assets/examples/example6/ref.jpg" alt="ref"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="media-fallback" style="display:none;">ref<br/><code>example6/ref.jpg</code></div>
+              </div>
+            </div>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-box compact-prompt">
+              <span class="kind-tag tag-prompt">Prompt</span>
+              <p>In a misty, forested area by a serene lake, a wooden dock extends into the water, adorned with several small boats tied to it. To the right, two round tents are nestled among the trees and vegetation. A group of people on horseback moves along a dirt path leading towards the dock, gradually approaching it. Meanwhile, a separate group of individuals walks on the dock, heading in the same direction. As the scene progresses, the group on horseback continues to advance, getting closer to the dock, while the walkers on the dock become more prominent. The mist adds a mystical ambiance to the tranquil setting, with the gentle ripples on the lake reflecting the soft light filtering through the trees.</p>
+            </div>
+          </div>
+          <div class="output-row">
+            <div class="media-card output-card">
+              <div class="media-card-head">
+                <span class="kind-tag tag-output">Generated</span>
+                <span class="kind-tag tag-ours">Ours</span>
+              </div>
+              <div class="media-frame ratio-16x9">
+                <video class="media" controls muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example6/output.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">final<br/><code>example6/output.mp4</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Compact Example 7 -->
+      <article class="example compact" data-has-control="true" data-has-ref="true">
+        <header class="example-header">
+          <span class="example-id">Example 07</span>
+        </header>
+        <div class="example-body">
+          <div class="inputs-row">
+            <div class="media-card" data-kind="control">
+              <div class="media-card-head"><span class="kind-tag tag-control">Control</span></div>
+              <div class="media-frame">
+                <video class="media" muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example7/control.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">control<br/><code>example7/control.mp4</code></div>
+              </div>
+            </div>
+            <div class="media-card" data-kind="ref">
+              <div class="media-card-head"><span class="kind-tag tag-ref">Ref</span></div>
+              <div class="media-frame">
+                <img class="media" src="assets/examples/example7/ref.jpg" alt="ref"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="media-fallback" style="display:none;">ref<br/><code>example7/ref.jpg</code></div>
+              </div>
+            </div>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-box compact-prompt">
+              <span class="kind-tag tag-prompt">Prompt</span>
+              <p>A woman stands in front of a building, surrounded by lush green plants and trees. She is wearing a light-colored shirt with a floral pattern and has long, dark hair. The woman gestures with her hands while speaking, moving her right hand up and down and occasionally touching her hair. She continues to gesture and speak, occasionally pausing and then resuming her gestures. Finally, she smiles while still standing in the same location. The camera remains stationary throughout the sequence, capturing the woman's expressive movements and the serene outdoor setting. The background features a well-maintained garden with various plants and trees, adding a natural and tranquil ambiance to the scene. The lighting suggests it is daytime, with sunlight filtering through the foliage, casting soft shadows on the ground. The overall atmosphere is calm and inviting, highlighting the woman's engaging presence and the picturesque surroundings.</p>
+            </div>
+          </div>
+          <div class="output-row">
+            <div class="media-card output-card">
+              <div class="media-card-head">
+                <span class="kind-tag tag-output">Generated</span>
+                <span class="kind-tag tag-ours">Ours</span>
+              </div>
+              <div class="media-frame ratio-16x9">
+                <video class="media" controls muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example7/output.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">final<br/><code>example7/output.mp4</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Compact Example 8 -->
+      <article class="example compact" data-has-control="true" data-has-ref="true">
+        <header class="example-header">
+          <span class="example-id">Example 08</span>
+        </header>
+        <div class="example-body">
+          <div class="inputs-row">
+            <div class="media-card" data-kind="control">
+              <div class="media-card-head"><span class="kind-tag tag-control">Control</span></div>
+              <div class="media-frame">
+                <video class="media" muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example8/control.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">control<br/><code>example8/control.mp4</code></div>
+              </div>
+            </div>
+            <div class="media-card" data-kind="ref">
+              <div class="media-card-head"><span class="kind-tag tag-ref">Ref</span></div>
+              <div class="media-frame">
+                <img class="media" src="assets/examples/example8/ref.jpg" alt="ref"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="media-fallback" style="display:none;">ref<br/><code>example8/ref.jpg</code></div>
+              </div>
+            </div>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-box compact-prompt">
+              <span class="kind-tag tag-prompt">Prompt</span>
+              <p>In a vibrant garden setting, an orange tabby cat stands on a brick structure adorned with red flowers and green foliage. The cat, with its sleek fur and expressive green eyes, initially looks down with a serious expression before raising its head and beginning to speak. It wipes its mouth with its paw while continuing its dialogue, occasionally closing its eyes briefly before opening them again. The cat then turns its head to the side and turns its body around, walking away from the brick structure and moving out of the frame. The background features a mix of red flowers and green leaves, creating a lively and colorful backdrop. The camera remains stationary throughout, capturing the cat's movements and expressions in detail.</p>
+            </div>
+          </div>
+          <div class="output-row">
+            <div class="media-card output-card">
+              <div class="media-card-head">
+                <span class="kind-tag tag-output">Generated</span>
+                <span class="kind-tag tag-ours">Ours</span>
+              </div>
+              <div class="media-frame ratio-16x9">
+                <video class="media" controls muted loop playsinline preload="metadata">
+                  <source src="assets/examples/example8/output.mp4" type="video/mp4" />
+                </video>
+                <div class="media-fallback">final<br/><code>example8/output.mp4</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /.examples-grid-2col -->
+
+  </div>
+</section>
+
+<!-- ===== BIBTEX ===== -->
+<section id="bibtex" class="section section-alt">
+  <div class="container narrow">
+    <h2 class="section-title">BibTeX</h2>
+    <pre class="bibtex"><code>@article{cogomnicontrol2026,
+  title   = {CogOmniControl: Reasoning-Driven Controllable Video Generation via Creative Intent Cognition},
+  author  = {Yang, Hongji and Li, Songlian and Zhou, Yucheng and Zhao, Xiaotong
+             and Zhao, Alan and Xu, Chengzhong and Shen, Jianbing},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Website template designed for academic project pages. © 2026 CogOmniControl Authors.</p>
+  </div>
+</footer>
+
+<script src="assets/static/script.js?v=4"></script>
+</body>
+</html>

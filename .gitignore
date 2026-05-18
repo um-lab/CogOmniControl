@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Node (not used now, but just in case)
+node_modules/
+
+# Generated / temporary
+*.tmp
+.codebuddy/
